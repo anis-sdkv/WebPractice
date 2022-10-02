@@ -1,14 +1,11 @@
-@font-face {
-    font-family: "Motiva Sans";
-    src: url(../font/MotivaSans-Regular_woff.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    -webkit-user-drag: none;
 }
 
 div {
@@ -27,7 +24,7 @@ a:hover {
 body {
     color: #E9E9E9;
     background-color: #181A21;
-    font-family: "Motiva Sans", Sans-serif;
+    font-family: 'Motiva Sans', Sans-serif;
     font-weight: normal;
 }
 
@@ -56,132 +53,8 @@ body::-webkit-scrollbar-thumb {
     min-width: 32px;
 }
 
-
-/* == Header == */
-
-header {
-    padding: 0 16px;
-    background: #171a21;
-    background-position: center top;
-    min-width: 940px;
-    font-family: "Motiva Sans", sans-serif;
-    font-weight: normal;
-    font-size: 14px;
-}
-
-.content {
-    background: #171a21;
-    position: relative;
-    width: 940px;
-    height: 104px;
-    margin: 0px auto;
-    z-index: 402;
-}
-
-.logo {
-    float: left;
-    padding-top: 30px;
-    margin-right: 40px;
-    width: 176px;
-    height: 44px;
-}
-
-.nav-container {
-    position: absolute;
-    left: 200px;
-}
-
-.nav__link {
-    display: block;
-    position: relative;
-    padding-top: 45px;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 7px;
-    line-height: 16px;
-    float: left;
-    font-size: 14px;
-    color: #b8b6b4;
-    text-transform: uppercase;
-}
-
-.nav__link:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.actions {
-    position: absolute;
-    right: 0px;
-    top: 6px;
-    height: 21px;
-    line-height: 21px;
-    color: #b8b6b4;
-    font-size: 11px;
-    z-index: 401;
-}
-
-.actions__content {
-    line-height: 24px;
-    vertical-align: top;
-    display: inline-block;
-}
-
-.actions__installsteam-btn {
-    display: inline-block;
-    position: relative;
-    height: 21px;
-    line-height: 24px;
-    margin-right: 3px;
-}
-
-.actions__installsteam-btn a {
-    display: inline-block;
-    padding-left: 35px;
-    padding-right: 9px;
-    background-position: 10px 5px;
-    background-image: url(https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1);
-    background-repeat: no-repeat;
-    text-decoration: none;
-    color: #e5e4dc;
-    font-weight: normal;
-    background-color: #5c7e10;
-}
-
-.actions__installsteam-btn a:hover {
-    color: #ffffff;
-}
-
-.actions__login {
-    color: #b8b6b4;
-    padding: 0 4px;
-}
-
-.actions__login:hover {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.actions__language {
-    display: inline-block;
-    padding-left: 4px;
-    line-height: 25px;
-
-    margin-right: 5px;
-}
-
-.actions__language:hover {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.pulldown {
-    padding-left: 5px;
-    padding-right: 18px;
-    background-image: url(https://store.akamai.steamstatic.com/public/shared/images/popups/btn_arrow_down_padded.png);
-    background-position: right center;
-    background-repeat: no-repeat;
-    cursor: pointer;
+body::-webkit-scrollbar-thumb:hover {
+    background: #4e5157;
 }
 
 /* == Main == */
@@ -190,13 +63,12 @@ header {
     background: radial-gradient(rgba(24, 26, 33, 0) 0%, #181A21 100%) fixed no-repeat,
         url(https://store.akamai.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask.jpg) center top no-repeat,
         #181A21;
-    padding: 0px 8px;
     width: 100%;
     margin: 0 auto;
 
     color: #E9E9E9;
     background-color: #181A21;
-    font-family: "Motiva Sans", Sans-serif;
+    font-family: 'Motiva Sans', Sans-serif;
     font-weight: normal;
 }
 
@@ -250,6 +122,8 @@ header {
 
 .login-form {
     flex: 1;
+    min-width: 412px;
+    max-width: 412px;
     display: grid;
     gap: 12px;
     grid-template-columns: 1fr;
@@ -296,8 +170,6 @@ header {
 }
 
 .checkbox {
-    width: 14px;
-    height: 14px;
     padding: 3px;
     border-radius: 2px;
     background-color: #32353c;
@@ -309,8 +181,8 @@ header {
 }
 
 .checkbox-icon {
-    width: 100%;
-    height: 100%;
+    width: 14px;
+    height: 14px;
     display: flex;
 }
 
@@ -388,8 +260,10 @@ header {
 /* == qr section == */
 
 .qr-section {
-    flex: 0;
-    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
     margin-left: 24px;
 }
 
@@ -445,6 +319,7 @@ header {
     text-align: center;
     text-decoration-line: underline;
     font-weight: 400;
+    width: 200px;
     font-size: 12px;
     line-height: 24px;
     color: #afafaf;
@@ -526,81 +401,70 @@ header {
     border: 1px solid rgb(255, 255, 255);
 }
 
-/* == Footer == */
+@media (max-width: 980px) {
+    .login-bottom{
+        padding-bottom: 120px;
+    }
 
-.footer-spacer {
-    position: relative;
-    height: 290px;
-    background-color: #181A21;
+    .main{
+        margin: 62px auto 0;
+    }
 }
 
-footer {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 16px 0 60px 0;
-    background-color: #181A21;
-    background: #171a21;
+@media (max-width: 700px) {
+    .main{
+        background: radial-gradient(rgba(24, 26, 33, 0) 0%, #181A21 100%) fixed no-repeat, url(https://store.cloudflare.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask_mobile.jpg) center top no-repeat, #181A21;
+    }
 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
+    .login{
+       padding-top: 12px;
+       padding-bottom: 0;
+    }
+    
+    .login-dialog__title{
+        text-align: center;
+    }
 
-.footer-content {
-    width: 940px;
-    margin: 0px auto;
-    padding-top: 16px;
-}
+    .login-container{
+        width: 334px;
+    }
 
-.rule {
-    height: 8px;
-    border-top: 1px solid #363c44;
-}
+    .form-container__content{
+        flex-direction: column;
+    }
+    
+    .form-container{
+        background:none;
+        min-width: 270px;
+    }
 
-.footer__logo-steam {
-    float: right;
-    padding-top: 2px;
-}
+    .login-form{
+        min-width: 270px;
+    }
+    
+    .qr-section{
+        min-width: 270px;
+        margin-top: 48px;
+        margin-left: 0;
+        align-items: center;
+    }
+    
+    .beta-container{
+        align-items: center;
+    }
 
-.footer__logo-valve {
-    float: left;
-    padding-top: 2px;
-}
+    .phone-icon{
+        display: none;
+    }
 
-.footer__logo-valve img {
-    height: 25px;
-    width: auto;
-}
+    .beta-subtitle-with-icon{
+        width: 184px;
+        text-align: center;
+        padding: 0;
+        margin: 8px;
+    }
 
-.footer__text {
-    float: left;
-    margin-left: 12px;
-    color: #8F98A0;
-    font-size: 12px;
-    line-height: 16px;
-}
-
-.footer__text a {
-    color: #C6D4DF;
-}
-
-.footer__text a:hover {
-    color: #ffffff;
-}
-
-.valve-links {
-    margin-top: 8px;
-    float: left;
-    font-family: "Motiva Sans", Sans-serif;
-    font-weight: normal;
-    font-size: 13px;
-    color: #61686D;
-}
-
-.valve-links a {
-    color: #C6D4DF;
-}
-
-.valve-links a:hover {
-    color: #ffffff;
+    .login-bottom{
+        flex-direction: column-reverse;
+    }
 }
