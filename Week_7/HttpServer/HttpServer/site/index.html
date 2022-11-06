@@ -109,18 +109,18 @@
                     <div class="login-dialog">
                         <div class="login-dialog__title">Войти</div>
 
-                        <div class="form-container" method="POST" action="/accounts/">
+                        <div class="form-container">
                             <div class="form-container__content">
-                                <form class="login-form">
+                                <form class="login-form" method="POST" action="/accounts/">
                                     <div class="text-field">
                                         <div class="text-field__hint account-name">Войти, используя имя аккаунта
                                         </div>
-                                        <input type="text" class="text-field__input" value="">
+                                        <input type="text" class="text-field__input" required="required" name="login">
                                     </div>
 
                                     <div class="text-field">
                                         <div class="text-field__hint">Пароль</div>
-                                        <input type="text" class="text-field__input" value="">
+                                        <input type="password" class="text-field__input" required="required" name="password">
                                     </div>
 
                                     <div class="checkbox-field">
