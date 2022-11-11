@@ -1,0 +1,470 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    -webkit-user-drag: none;
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    color: #66c0f4;
+}
+
+body {
+    color: #E9E9E9;
+    background-color: #181A21;
+    font-family: 'Motiva Sans', Sans-serif;
+    font-weight: normal;
+}
+
+body::-webkit-scrollbar {
+    height: 12px;
+    width: 14px;
+    background: transparent;
+    z-index: 12;
+    overflow: visible;
+}
+
+body::-webkit-scrollbar-corner {
+    background: #202020;
+}
+
+body::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: #434953;
+    border-radius: 10px;
+    z-index: 12;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    transition: background-color 2.32s ease-in-out;
+    margin: 4px;
+    min-height: 32px;
+    min-width: 32px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #4e5157;
+}
+
+/* == Main == */
+
+.main {
+    background: radial-gradient(rgba(24, 26, 33, 0) 0%, #181A21 100%) fixed no-repeat,
+        url(https://store.akamai.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask.jpg) center top no-repeat,
+        #181A21;
+    width: 100%;
+    margin: 0 auto;
+
+    color: #E9E9E9;
+    background-color: #181A21;
+    font-family: 'Motiva Sans', Sans-serif;
+    font-weight: normal;
+}
+
+.login {
+    padding-top: 80px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container {
+    position: relative;
+    width: 700px;
+}
+
+.login-dialog {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+.login-dialog__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 16px;
+
+    color: #fff;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: .055em;
+    font-weight: 200;
+}
+
+.form-container {
+    background-color: #181a21;
+    border-radius: 4px;
+    padding: 24px 32px;
+    flex: 1;
+    min-width: 636px;
+}
+
+.form-container__content {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.login-form {
+    flex: 1;
+    min-width: 412px;
+    max-width: 412px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+}
+
+.text-field {
+    display: grid;
+    grid-template-areas:
+        "label hint"
+        "input input";
+    grid-template-columns: 1fr min-content;
+    gap: 2px;
+}
+
+.text-field__hint {
+    font-size: 12px;
+    color: #afafaf;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    user-select: none;
+}
+
+.text-field__input {
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    background-color: #32353c;
+    outline: none;
+    font-size: 15px;
+    grid-area: input;
+    border: 1px solid #32353c;
+}
+
+.account-name {
+    color: #1999ff;
+    font-weight: 500;
+}
+
+.checkbox-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox {
+    padding: 3px;
+    border-radius: 2px;
+    background-color: #32353c;
+    cursor: pointer;
+}
+
+.checkbox:hover {
+    background-color: #393c44;
+}
+
+.checkbox-icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+}
+
+.checkbox-icon svg {
+    fill: #fff;
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+    max-width: 320px;
+    max-height: 320px;
+}
+
+.checkbox__hint {
+    color: #afafaf;
+    font-size: 12px;
+    user-select: none;
+    padding-left: 6px;
+}
+
+.submit-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit-btn {
+    position: relative;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: inherit;
+    text-align: center;
+    letter-spacing: .03em;
+    cursor: pointer;
+    width: 270px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #06BFFF 30%, #2D73FF 100%);
+}
+
+.submit-btn:focus {
+    outline: solid #06bfff;
+    outline-width: 1px;
+}
+
+.submit-btn:active {
+    background: linear-gradient(90deg, #06BFFF 50%, #2D73FF 100%);
+}
+
+.form-error {
+    color: #c15755;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.form-help {
+    text-align: center;
+    color: #afafaf;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.form-help:hover {
+    color: #c9c9c9;
+}
+
+/* == qr section == */
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    margin-left: 24px;
+}
+
+.beta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.beta-tag {
+    color: #1999ff;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 6px 0px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+.beta-subtitle-with-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 0px;
+}
+
+.phone-icon {
+    width: 120px;
+    fill: #afafaf;
+}
+
+.beta-subtitle {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #afafaf;
+    margin: 8px;
+}
+
+.join-beta-btn {
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+.show-qr {
+    text-align: center;
+    text-decoration-line: underline;
+    font-weight: 400;
+    width: 200px;
+    font-size: 12px;
+    line-height: 24px;
+    color: #afafaf;
+    padding: 12px 0px;
+    cursor: pointer;
+}
+
+/* == Ligin bottom == */
+
+.login-bottom {
+    display: flex;
+    flex-direction: row;
+    padding-top: 48px;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    justify-content: center;
+    background-color: #181A21;
+}
+
+.login-bottom__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+}
+
+.subtext {
+    font-size: 14px;
+    color: #b8b6b4;
+}
+
+.about-btn {
+    max-width: 60%;
+    text-align: center;
+    font-size: 14px;
+
+    margin-top: 10px;
+    color: #FFFFFF;
+}
+
+.btn-with-border {
+    margin-top: 20px;
+}
+
+.btn-with-border a {
+    margin: 20px 0 10px 0;
+    display: block;
+    text-align: center;
+}
+
+.btn-medium {
+    border-radius: 2px;
+    border: none;
+    padding: 1px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: #fff !important;
+    background: transparent;
+}
+
+.btn-medium>span {
+    border-radius: 2px;
+    display: block;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.btn-medium>span:hover {
+    border: 1px solid rgb(255, 255, 255);
+}
+
+@media (max-width: 980px) {
+    .login-bottom{
+        padding-bottom: 120px;
+    }
+
+    .main{
+        margin: 62px auto 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .main{
+        background: radial-gradient(rgba(24, 26, 33, 0) 0%, #181A21 100%) fixed no-repeat, url(https://store.cloudflare.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask_mobile.jpg) center top no-repeat, #181A21;
+    }
+
+    .login{
+       padding-top: 12px;
+       padding-bottom: 0;
+    }
+    
+    .login-dialog__title{
+        text-align: center;
+    }
+
+    .login-container{
+        width: 334px;
+    }
+
+    .form-container__content{
+        flex-direction: column;
+    }
+    
+    .form-container{
+        background:none;
+        min-width: 270px;
+    }
+
+    .login-form{
+        min-width: 270px;
+    }
+    
+    .qr-section{
+        min-width: 270px;
+        margin-top: 48px;
+        margin-left: 0;
+        align-items: center;
+    }
+    
+    .beta-container{
+        align-items: center;
+    }
+
+    .phone-icon{
+        display: none;
+    }
+
+    .beta-subtitle-with-icon{
+        width: 184px;
+        text-align: center;
+        padding: 0;
+        margin: 8px;
+    }
+
+    .login-bottom{
+        flex-direction: column-reverse;
+    }
+}
