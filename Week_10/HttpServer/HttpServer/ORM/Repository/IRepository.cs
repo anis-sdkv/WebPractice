@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace HttpServer.ORM.Repository
 {
-    public interface IRepository
+    public interface IRepository<T>
     {
-        void Add(Account account);
-        void Remove(Account account);
-        void Update(Account account); 
+        void Add(T entity);
+        void Remove(T entity);
+        void Update(T entity); 
     }
 }

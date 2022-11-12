@@ -25,6 +25,9 @@ namespace HttpServer.ORM.DAO
 
         public bool Update(Account entity) =>
             orm.Update(entity, $"Id = {entity.Id}");
+
+        public Account? GetEntityByLogin(string login) =>
+            orm.Select<Account>($"Login = '{login}'").FirstOrDefault();
     }
 }
 

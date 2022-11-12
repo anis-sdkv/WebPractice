@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HttpServer.ORM.Repository
 {
-    class AccountRepository : IRepository
+    class AccountRepository : IRepository<Account>
     {
         private MyORM orm;
         public AccountRepository(MyORM orm)

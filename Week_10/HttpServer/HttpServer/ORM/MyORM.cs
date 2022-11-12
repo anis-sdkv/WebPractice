@@ -8,38 +8,37 @@ namespace HttpServer.ORM
 {
     public class MyORM
     {
-        private IDbConnection _connection;
-        private IDbCommand _command;
+        private string _connectionString;
         private string _tableName;
 
         public MyORM(string connectionString, string tableName)
         {
-            _connection = new SqlConnection(connectionString);
-            _command = _connection.CreateCommand();
+            _connectionString = connectionString;
             _tableName = tableName;
         }
 
-        public MyORM AddParameter<T>(string name, T value)
-        {
-            var parameter = new SqlParameter();
-            parameter.ParameterName = name;
-            parameter.Value = value;
-            _command.Parameters.Add(parameter);
-            return this;
-        }
+        //public MyORM AddParameter<T>(string name, T value)
+        //{
+        //    var parameter = new SqlParameter();
+        //    parameter.ParameterName = name;
+        //    parameter.Value = value;
+        //    _command.Parameters.Add(parameter);
+        //    return this;
+        //}
 
         public int ExecuteNonQuerry(string querry, bool isStoredProc = false)
         {
             int noOfAffectedRows = 0;
 
-            using (_connection)
+            using (var connection = new SqlConnection(_connectionString))
             {
+                var command = connection.CreateCommand();
                 if (isStoredProc)
-                    _command.CommandType = CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
 
-                _command.CommandText = querry;
-                _connection.Open();
-                noOfAffectedRows = _command.ExecuteNonQuery();
+                command.CommandText = querry;
+                connection.Open();
+                noOfAffectedRows = command.ExecuteNonQuery();
             }
             return noOfAffectedRows;
         }
@@ -49,15 +48,16 @@ namespace HttpServer.ORM
             var result = new List<T>();
             var type = typeof(T);
 
-            using (_connection)
+            using (var connection = new SqlConnection(_connectionString))
             {
+                var command = connection.CreateCommand();
                 if (isStoredProc)
-                    _command.CommandType = CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
 
-                _command.CommandText = querry;
-                _connection.Open();
+                command.CommandText = querry;
+                connection.Open();
 
-                var reader = _command.ExecuteReader();
+                var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     var instance = (T)Activator.CreateInstance(type);
@@ -76,14 +76,15 @@ namespace HttpServer.ORM
         {
             var result = default(T);
 
-            using (_connection)
+            using (var connection = new SqlConnection(_connectionString))
             {
+                var command = connection.CreateCommand();
                 if (isStoredProc)
-                    _command.CommandType = CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
 
-                _command.CommandText = querry;
-                _connection.Open();
-                result = (T)_command.ExecuteScalar();
+                command.CommandText = querry;
+                connection.Open();
+                result = (T)command.ExecuteScalar();
             }
 
             return result;
