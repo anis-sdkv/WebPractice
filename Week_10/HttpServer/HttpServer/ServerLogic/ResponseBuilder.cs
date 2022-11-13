@@ -32,7 +32,7 @@ namespace HttpServer.ServerLogic
             return this;
         }
 
-        public ResponseBuilder SetSerializable(object o)
+        public ResponseBuilder SetObject(object o)
         {
             Response.ContentType = "application/json";
             _buffer = Encoding.ASCII.GetBytes(JsonSerializer.Serialize(o));
@@ -105,6 +105,11 @@ namespace HttpServer.ServerLogic
             return this;
         }
 
+        public ResponseBuilder SetStatusCode(int code)
+        {
+            Response.StatusCode = code;
+            return this;
+        }
         public async Task SendAsync()
         {
             if (_buffer != null)

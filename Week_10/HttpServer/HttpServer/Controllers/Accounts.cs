@@ -15,35 +15,39 @@ namespace HttpServer.Controllers
 
 
         [HttpGET]
-        public ResponseBuilder GetAccounts(HttpListenerResponse response)
+        public ResponseBuilder GetAccounts(HttpListenerContext context)
         {
+            var builer = new ResponseBuilder(context.Response);
+            if (context.Request.Cookies
+                .FirstOrDefault(c => c.Name == "SessionId" &&
+                c.Value.StartsWith("IsAuthorize:true")) == null)
+                return builer.SetStatusCode(401);
             var accounts = _accountDAO.GetAll();
-            return new ResponseBuilder(response)
-                .SetSerializable(accounts);
+            return builer.SetObject(accounts);
         }
 
         [HttpGET("\\d+")]
-        public ResponseBuilder GetAccountById(int id, HttpListenerResponse response)
+        public ResponseBuilder GetAccountById(int id, HttpListenerContext context)
         {
             var account = _accountDAO.GetEntityByKey(id);
-            return new ResponseBuilder(response)
-                .SetSerializable(account);
+            return new ResponseBuilder(context.Response)
+                .SetObject(account);
         }
 
         [HttpPOST]
-        public ResponseBuilder SaveAccount(string login, string password, HttpListenerResponse response)
+        public ResponseBuilder SaveAccount(string login, string password, HttpListenerContext context)
         {
-            var builder = new ResponseBuilder(response);
+            var builder = new ResponseBuilder(context.Response);
             if (_accountDAO.GetEntityByLogin(login) != null)
-                return builder.SetMessage("Аккаунт уже зарегистрирован!");
+                return builder.SetMessage("Аккаунт с таким логином уже зарегистрирован!");
             _accountDAO.Create(new Account(login, password));
             return builder.SetRedirect("https://steamcommunity.com/");
         }
 
         [HttpPOST]
-        public ResponseBuilder Login(string email, string password, HttpListenerResponse response)
+        public ResponseBuilder Login(string email, string password, HttpListenerContext context)
         {
-            var builder = new ResponseBuilder(response);
+            var builder = new ResponseBuilder(context.Response);
             var account = _accountDAO.GetEntityByLogin(email);
             if (account == null) return builder;
             if (account.Password == password)
@@ -53,7 +57,7 @@ namespace HttpServer.Controllers
                 builder.SetCookie(cookie);
                 return builder;
             }
-            return builder.SetMessage("Н");
+            return builder.SetMessage("Пожалуйста, проверьте свой пароль и имя аккаунта и попробуйте снова.");
         }
     }
 }

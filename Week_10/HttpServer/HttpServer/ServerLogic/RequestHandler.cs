@@ -29,7 +29,7 @@ namespace HttpServer.ServerLogic
                 var builder = await new ResponseBuilder(response).SetContentAsync(path);
                 await builder.SendAsync();
             }
-            else if (TryMethodHandle(request, response, out var builder))
+            else if (TryMethodHandle(context, out var builder))
             {
                 await builder.SendAsync();
             }
@@ -39,11 +39,12 @@ namespace HttpServer.ServerLogic
                     .SetNotFoundMessage()
                     .SendAsync();
             }
-            logger.LogMessage($"Запрос обработан: {context.Request.Url}");
+            logger.LogMessage($"Запрос обработан: {request.Url}");
         }
 
-        private bool TryMethodHandle(HttpListenerRequest request, HttpListenerResponse response, out ResponseBuilder builder)
+        private bool TryMethodHandle(HttpListenerContext context, out ResponseBuilder builder)
         {
+            var request = context.Request;
             builder = null;
             if (request.Url.Segments.Length < 2) return false;
 
@@ -78,7 +79,7 @@ namespace HttpServer.ServerLogic
 
             var objParams = strParams
                 .Cast<object>()
-                .Concat(new[] { (object)response })
+                .Concat(new[] { (object)context })
                 .ToArray();
 
             object[] queryParams = method
