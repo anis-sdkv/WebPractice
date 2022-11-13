@@ -33,11 +33,11 @@ namespace HttpServer.Controllers
         [HttpPOST]
         public ResponseBuilder SaveAccount(string login, string password, HttpListenerResponse response)
         {
-            var builder  = new ResponseBuilder(response);
+            var builder = new ResponseBuilder(response);
             if (_accountDAO.GetEntityByLogin(login) != null)
-                return builder;
+                return builder.SetMessage("Аккаунт уже зарегистрирован!");
             _accountDAO.Create(new Account(login, password));
-            return builder;
+            return builder.SetRedirect("https://steamcommunity.com/");
         }
 
         [HttpPOST]
@@ -46,13 +46,14 @@ namespace HttpServer.Controllers
             var builder = new ResponseBuilder(response);
             var account = _accountDAO.GetEntityByLogin(email);
             if (account == null) return builder;
-            if( account.Password == password)
+            if (account.Password == password)
             {
                 var id = account.Id;
-                var isAuthorized = true;
+                var cookie = new Cookie("SessionId", $"IsAuthorize:true,id={id}");
+                builder.SetCookie(cookie);
                 return builder;
             }
-            return builder;
+            return builder.SetMessage("Н");
         }
     }
 }

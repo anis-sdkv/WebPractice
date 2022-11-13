@@ -78,6 +78,13 @@ namespace HttpServer.ServerLogic
             }
         }
 
+        public ResponseBuilder SetMessage(string message)
+        {
+            Response.ContentType = "text/plain;charset=UTF-8";
+            _buffer = Encoding.UTF8.GetBytes(message);
+            return this;
+        }
+
         public ResponseBuilder SetNotFoundMessage()
         {
             Response.StatusCode = (int)HttpStatusCode.NotFound;
@@ -89,6 +96,12 @@ namespace HttpServer.ServerLogic
         {
             Response.StatusCode = 303;
             Response.Redirect(url);
+            return this;
+        }
+
+        public ResponseBuilder SetCookie(Cookie cookie)
+        {
+            Response.SetCookie(cookie);
             return this;
         }
 
