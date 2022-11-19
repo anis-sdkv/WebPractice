@@ -101,7 +101,7 @@ namespace HttpServer.ServerLogic
 
         public ResponseBuilder SetCookie(Cookie cookie)
         {
-            Response.SetCookie(cookie);
+            Response.Cookies.Add(cookie);
             return this;
         }
 

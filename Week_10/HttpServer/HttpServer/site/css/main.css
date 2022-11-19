@@ -169,11 +169,26 @@ body::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
 }
 
+.checkbox_remember{
+    display: none;
+}
+
+.checkbox_remember_label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox_remember:checked ~.checkbox_remember_label .checkbox-icon{
+    visibility: visible;
+}
+
 .checkbox {
     padding: 3px;
     border-radius: 2px;
     background-color: #32353c;
-    cursor: pointer;
+    cursor  : pointer;
 }
 
 .checkbox:hover {
@@ -181,6 +196,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .checkbox-icon {
+    visibility: hidden;
     width: 14px;
     height: 14px;
     display: flex;

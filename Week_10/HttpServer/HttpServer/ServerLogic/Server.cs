@@ -71,7 +71,7 @@ namespace HttpServer.ServerLogic
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex.Message);
+                    _logger.LogError(ex.StackTrace + ex.Message);
                 }
             }
         }

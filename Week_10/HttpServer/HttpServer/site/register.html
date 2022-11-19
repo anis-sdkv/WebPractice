@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/reg.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Войти</title>
+  </head>
+  <body>
+    <form class="register_form" method="POST" action="/accounts/save">
+      <div class="container">
+        <label for="input_login">Логин</label>
+        <input type="text" id="input_login" name="login" />
+
+        <label for="input_pass">Пароль</label>
+        <input type="password" id="input_pass" name="password" />
+
+        <input type="checkbox" class="checkbox" />
+
+        <button class="btn_submit" type="submit">Зарегистрироваться</button>
+      </div>
+    </form>
+  </body>
+</html>

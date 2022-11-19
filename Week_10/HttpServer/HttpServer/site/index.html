@@ -111,7 +111,7 @@
 
                         <div class="form-container">
                             <div class="form-container__content">
-                                <form class="login-form" method="POST" action="/accounts/">
+                                <form class="login-form" method="POST" action="/accounts/login">
                                     <div class="text-field">
                                         <div class="text-field__hint account-name">Войти, используя имя аккаунта
                                         </div>
@@ -123,7 +123,8 @@
                                         <input type="password" class="text-field__input" required="required" name="password">
                                     </div>
 
-                                    <div class="checkbox-field">
+                                        <input type="checkbox" class="checkbox_remember" name="remember" id="checkbox_remember">
+                                        <label for="checkbox_remember" class="checkbox_remember_label">
                                         <div tabindex="0" class="checkbox">
                                             <div class="checkbox-icon">
                                                 <svg version="1.1" id="base" xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +139,8 @@
                                             </div>
                                         </div>
                                         <div class="checkbox__hint">Запомнить меня</div>
-                                    </div>
+                                        </label>
+                    
 
                                     <div class="submit-btn-container">
                                         <button class="submit-btn" type="submit">

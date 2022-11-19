@@ -10,7 +10,7 @@ namespace HttpServer.ServerLogic
 {
     class RequestHandler
     {
-        public string DataDirectory { get; set; }
+        public static string DataDirectory { get; set; }
         public RequestHandler(string dataDir)
         {
             DataDirectory = dataDir;
@@ -77,14 +77,11 @@ namespace HttpServer.ServerLogic
             if (request.HttpMethod == "POST")
                 strParams = ParseBody(GetPostBody(request));
 
-            var objParams = strParams
-                .Cast<object>()
-                .Concat(new[] { (object)context })
-                .ToArray();
-
             object[] queryParams = method
                 .GetParameters()
-                .Select((p, i) => Convert.ChangeType(objParams[i], p.ParameterType))
+                .SkipLast(1)
+                .Select((p, i) => Convert.ChangeType(strParams[i], p.ParameterType))
+                .Append(context)
                 .ToArray();
 
             var result = method.Invoke(
