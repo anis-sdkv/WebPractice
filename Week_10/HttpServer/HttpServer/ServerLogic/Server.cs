@@ -67,7 +67,7 @@ namespace HttpServer.ServerLogic
                 try
                 {
                     var context = await _listener.GetContextAsync();
-                    await handler.Handle(context, _logger);
+                    handler.Handle(context, _logger);
                 }
                 catch (Exception ex)
                 {

@@ -11,7 +11,7 @@ namespace HttpServer.Controllers
     class Accounts
     {
         private AccountDAO _accountDAO =
-            new AccountDAO("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SteamDB;Integrated Security=True;");
+            new AccountDAO("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SteamDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
 
         [HttpGET]
@@ -65,7 +65,7 @@ namespace HttpServer.Controllers
                 if (account.Password == password)
                 {
                     var id = account.Id;
-                    var cookie = new Cookie("SessionId", $"IsAuthorize:trueid={id}");
+                    var cookie = new Cookie("SessionId", $"IsAuthorize:true,Id={id}");
                     builder.SetCookie(cookie).SetMessage($"Вы авторизовались под логином {login}");
                     return builder;
                 }

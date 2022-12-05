@@ -23,7 +23,7 @@ namespace HttpServer.Models
             }
             catch
             {
-                throw new Exception($"Incorrect AuthorizeInfo format: {info}");
+                    throw new Exception($"Incorrect AuthorizeInfo format: {info}");
             }
         }
     }

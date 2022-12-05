@@ -16,7 +16,7 @@ namespace HttpServer.ServerLogic
             DataDirectory = dataDir;
         }
 
-        public async Task Handle(HttpListenerContext context, ServerLogger logger)
+        public void Handle(HttpListenerContext context, ServerLogger logger)
         {
             logger.LogMessage($"Запрос получен: {context.Request.Url}");
             var request = context.Request;
@@ -26,16 +26,16 @@ namespace HttpServer.ServerLogic
 
             if (File.Exists(path))
             {
-                var builder = await new ResponseBuilder(response).SetContentAsync(path);
-                await builder.SendAsync();
+                var builder = new ResponseBuilder(response).SetContentAsync(path);
+                builder.Result.SendAsync();
             }
             else if (TryMethodHandle(context, out var builder))
             {
-                await builder.SendAsync();
+                builder.SendAsync();
             }
             else
             {
-                await new ResponseBuilder(response)
+                new ResponseBuilder(response)
                     .SetNotFoundMessage()
                     .SendAsync();
             }
