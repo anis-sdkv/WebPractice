@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer.SessionManager
+namespace HttpServer.Sessions
 {
     class SessionManager
     {
@@ -27,16 +27,21 @@ namespace HttpServer.SessionManager
             cache = new MemoryCache(new MemoryCacheOptions());
         }
 
-        public void CreateSession(int accountId, string email)
+        public Session CreateSession(int accountId, string email)
         {
-            var session = new Session(0, accountId, email, DateTime.Now);
+            var session = new Session(Guid.NewGuid(), accountId, email, DateTime.Now);
             var cacheEntryOptions = new MemoryCacheEntryOptions()
                 .SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
 
-            cache.Set(0, session, cacheEntryOptions);
+            cache.Set(session.Guid, session, cacheEntryOptions);
+            return session;
         }
 
-        public bool SessionExists(int id) => cache.Get(id) != null;
-        public Session GetSession(int id) => (Session)cache.Get(id);
+        public bool SessionExists(Guid guid) => cache.Get(guid) != null;
+        public Session GetSession(Guid guid) => (Session)cache.Get(guid);
+        public bool TryGetSession(Guid guid, out Session session)
+        {
+            return cache.TryGetValue(guid, out session);
+        }
     }
 }

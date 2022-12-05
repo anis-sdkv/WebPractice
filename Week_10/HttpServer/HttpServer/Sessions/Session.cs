@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpServer.SessionManager
+namespace HttpServer.Sessions
 {
     class Session
     {
-        public int Id { get; set; }
+        public Guid Guid { get; set; }
         public int AccountId { get; set; }
         public string Email { get; set; }
         public DateTime CreateDateTime { get; set; }
 
-        public Session( int id, int accountId, string email, DateTime time)
+        public Session(Guid guid, int accountId, string email, DateTime time)
         {
-            Id = id;
+            Guid = guid;
             AccountId = accountId;
             Email = email;
-            CreateDateTime= time;
+            CreateDateTime = time;
         }
     }
 }

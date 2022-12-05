@@ -3,6 +3,7 @@ using HttpServer.Attributes;
 using HttpServer.Models;
 using HttpServer.ORM.DAO;
 using HttpServer.ServerLogic;
+using HttpServer.Sessions;
 using System.Net;
 
 namespace HttpServer.Controllers
@@ -41,9 +42,9 @@ namespace HttpServer.Controllers
             var builder = new ResponseBuilder(context.Response);
 
             var sessionId = context.Request.Cookies["SessionId"];
-            if (!TryAuthorize(sessionId, builder, out var info))
+            if (!TryAuthorize(sessionId, builder, out var session))
                 return builder;
-            return GetAccountById(info.Id, context);
+            return GetAccountById(session.AccountId, context);
         }
 
         [HttpPOST("save")]
@@ -61,26 +62,27 @@ namespace HttpServer.Controllers
         {
             var builder = new ResponseBuilder(context.Response);
             var account = _accountDAO.GetEntityByLogin(login);
-            if (account != null)
-                if (account.Password == password)
-                {
-                    var id = account.Id;
-                    var cookie = new Cookie("SessionId", $"IsAuthorize:true,Id={id}");
-                    builder.SetCookie(cookie).SetMessage($"Вы авторизовались под логином {login}");
-                    return builder;
-                }
+            if (account != null && account.Password == password)
+            {
+                var manager = SessionManager.Instance;
+                var session = manager.CreateSession(account.Id, account.Login);
+
+                var cookie = new Cookie("SessionId", session.Guid.ToString());
+                builder.SetCookie(cookie).SetMessage($"Вы авторизовались под логином {login}");
+                return builder;
+            }
             return builder.SetMessage("Пожалуйста, проверьте свой пароль и имя аккаунта и попробуйте снова.");
         }
 
-        private bool TryAuthorize(Cookie? sessionId, ResponseBuilder builder, out AuthorizeInfo? info)
+        private bool TryAuthorize(Cookie? sessionId, ResponseBuilder builder, out Session session)
         {
+            session = null;
             if (sessionId != null)
             {
-                info = AuthorizeInfo.Parse(sessionId.Value);
-                if (info.IsAuthorize)
+                var manager = SessionManager.Instance;
+                if (manager.TryGetSession(Guid.Parse(sessionId.Value), out session))
                     return true;
             }
-            info = null;
             builder.SetStatusCode((int)HttpStatusCode.Unauthorized);
             return false;
         }
